@@ -1,15 +1,16 @@
-money_capital = 20000  # Подушка безопасности
-salary = 5000  # Ежемесячная зарплата
-spend = 6000  # Траты за первый месяц
-increase = 0.05  # Ежемесячный рост цен
+salary = 5000
+spend = 6000
+months = 10
+increase = 0.03
 
-# TODO Посчитайте количество  месяцев, которое можно протянуть без долгов
-months = 0
-new_spend = spend
-while money_capital > 0:
-    new_spend += spend * increase
-    money_capital -= new_spend - salary
-    if money_capital < 0:
-        break
-    months += 1
-print("Количество месяцев, которое можно протянуть без долгов:", months)
+money_capital = 0
+current_spend = spend
+
+for month in range(months):
+    needed_money = current_spend - salary
+    if needed_money > 0:
+        money_capital += needed_money
+    current_spend += current_spend * increase
+
+money_capital = round(money_capital)
+print(f"Подушка безопасности, чтобы протянуть {months} месяцев без долгов:", money_capital)
