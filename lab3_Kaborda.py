@@ -35,26 +35,26 @@ class PaperBook(Book):
             raise TypeError("Количество страниц должно быть целым числом")
         if value <= 0:
             raise ValueError("Количество страниц должно быть положительным числом")
-        self._pages = value  # Устанавливаем значение
+        self._pages = value 
 
 
 class AudioBook(Book):
     """ Аудиокнига """
     def __init__(self, name: str, author: str, duration: float):
         super().__init__(name, author)
-        self.duration = duration  # Используем сеттер
+        self.duration = duration 
 
     @property
     def duration(self) -> float:
-        return self._duration  # Геттер
+        return self._duration  
 
     @duration.setter
     def duration(self, value: float):
         if not isinstance(value, (float, int)):
-            raise TypeError("Продолжительность должна быть числом (float или int)")
+            raise TypeError("Продолжительность должна быть числом (float или int)") #т.к. 2 минуты и 2.0 минут это одно и тоже, можно добавить int
         if value <= 0:
             raise ValueError("Продолжительность должна быть положительным числом")
-        self._duration = float(value)  # Преобразуем int в float
+        self._duration = float(value)  
 book = PaperBook("Солярис", "Станислав Лем", 1)
 print(book)
 book.pages = 555
